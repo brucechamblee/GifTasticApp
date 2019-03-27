@@ -1,22 +1,22 @@
 $(function(){
-    populateButtons(searchArray,'searchButton','#buttonsArea');
+    populateButtons(topics,'searchButton','#buttonsArea');
 })
 
-var searchArray = ["Dog", "Cat", "Bird"];
+var topics = ["Dog", "Cat", "Bird"];
 
-function populateButtons(searchArray,classToAdd,areaToAddTo){
+function populateButtons(topics,classToAdd,areaToAddTo){
     $(areaToAddTo).empty();
-    for(var i = 0; i < searchArray.length; i++){
+    for(var i = 0; i < topics.length; i++){
         var a = $('<button>');
         a.addClass(classToAdd);
-        a.attr('data-type',searchArray[i]);
-        a.text(searchArray[i]);
+        a.attr('data-type',topics[i]);
+        a.text(topics[i]);
         $(areaToAddTo).prepend(a);
     }
 }
 
 $(document).on('click','.searchButton',function(){
-    // $('searches').empty();
+    $('searches').empty();
     var type = $(this).data('type');
     var queryUrl = 'https://api.giphy.com/v1/gifs/search?q='+type+'&api_key=LCBBepXycXgqeV7p4QbDSb0vP7bVbUIX&=10';
     $.ajax({url:queryUrl, method:'GET'})
@@ -30,33 +30,35 @@ $(document).on('click','.searchButton',function(){
                 var image = $('<img>');
                 image.attr('src', still);
                 image.attr('data-still', still);
-                image.attr('date-animated', animated);
+                image.attr('data-animated', animated);
                 image.attr('data-state','still');
                 image.addClass('searchImage');
-                searchDiv.append(p);
-                searchDiv.append(image);
-                $('#searches').append(searchDiv);
-                console.log(searchDiv);
+                searchDiv.prepend(p);
+                searchDiv.prepend(image);
+                $('#searches').prepend(searchDiv);
+                
             }
         })
 })
 
 $(document).on('click','.searchImage',function(){
     var state = $(this).attr('data-state');
-    if(state == 'still'){
+    if(state === 'still'){
         $(this).attr('src',$(this).data('animated'));
         $(this).attr('data-state','animated');
     } else {
         $(this).attr('src',$(this).data('still'));
         $(this).attr('data-state','still');
+        console.log(this);
     }
+
 
 })
 
 $('#addSearch').on('click', function(){
     var newSearch = $('input').eq(0).val();
-    searchArray.push(newSearch);
-    populateButtons(searchArray,'searchButton','#buttonsArea');
+    topics.push(newSearch);
+    populateButtons(topics,'searchButton','#buttonsArea');
     return false;
 
 })
