@@ -16,7 +16,7 @@ function populateButtons(topics,classToAdd,areaToAddTo){
 }
 
 $(document).on('click','.searchButton',function(){
-    $('searches').empty();
+    $('#searches').empty();
     var type = $(this).data('type');
     var queryUrl = 'https://api.giphy.com/v1/gifs/search?q='+type+'&api_key=LCBBepXycXgqeV7p4QbDSb0vP7bVbUIX&=10';
     $.ajax({url:queryUrl, method:'GET'})

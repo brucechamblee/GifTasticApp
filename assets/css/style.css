@@ -1,0 +1,56 @@
+body {
+    font: 18px arial, sans-serif;
+    background-image: url(../images/braydon-anderson-105552-unsplash.jpg);
+    background-size: 100%;
+}
+#searches {
+    width: 70%;
+    float: left;
+}
+
+.search-Item {
+    float: left;
+    padding: 10px;
+}
+
+form {
+    float: right;
+    width: 30%;
+    padding: 20px;
+}
+
+label {
+    display: block;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+input [type="text"]{
+    width: 100%;
+    margin-bottom: 10px;
+    height: 30px;
+    font-size: 18px;
+
+}
+
+button,
+input[type="submit"]{
+    background: #659A98;
+    color: #ffffff;
+    border: 0;
+    border-radius: 5px;
+    padding: 5px 20px;
+    font-size: 18px;
+    margin: 10px 10px 10px 10px;
+    cursor: pointer;
+    box-shadow: 2px 2px 3px #bbb;
+}
+
+button:hover,
+input[type="submit"]:hover{
+    background: #334E4D;
+
+}
+button.active {
+    background: #334E4D;
+}
